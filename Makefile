@@ -37,7 +37,7 @@
 
 .KEEP_STATE:
 
-all: seq omp cuda mpi
+all: seq omp cuda
 
 DFLAGS      =
 OPTFLAGS    = -O -NDEBUG
@@ -55,7 +55,6 @@ LIBS        =
 OMPFLAGS    = -fopenmp
 
 CC          = gcc
-MPICC       = mpicc
 NVCC        = nvcc
 
 .c.o:
@@ -75,27 +74,6 @@ omp_kmeans.o: omp_kmeans.c $(H_FILES)
 omp: omp_main
 omp_main: $(OMP_OBJ) file_io.o
 	$(CC) $(LDFLAGS) $(OMPFLAGS) -o omp_main $(OMP_OBJ) file_io.o $(LIBS)
-
-#------   MPI version -----------------------------------------
-MPI_SRC     = mpi_main.c   \
-              mpi_kmeans.c \
-              mpi_io.c     \
-	      file_io.c
-
-MPI_OBJ     = $(MPI_SRC:%.c=%.o)
-
-mpi_main.o: mpi_main.c $(H_FILES)
-	$(MPICC) $(CFLAGS) -c $*.c
-
-mpi_kmeans.o: mpi_kmeans.c $(H_FILES)
-	$(MPICC) $(CFLAGS) -c $*.c
-
-mpi_io.o: mpi_io.c $(H_FILES)
-	$(MPICC) $(CFLAGS) -c $*.c
-
-mpi: mpi_main
-mpi_main: $(MPI_OBJ) $(H_FILES)
-	$(MPICC) $(LDFLAGS) -o mpi_main $(MPI_OBJ) $(LIBS)
 
 #------   sequential version -----------------------------------------
 SEQ_SRC     = seq_main.c   \
