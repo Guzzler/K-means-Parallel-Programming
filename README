@@ -21,7 +21,7 @@ You will need the NVIDIA CUDA toolkit, which contains nvcc, to build the CUDA
 version. It works fine in concert with gcc.
 
 To run:
-  * On running a 'make clean' or a the benchmark.sh script the following executables will be produced -
+  * On running a 'make clean' or the 'benchmark.sh' script the following executables will be produced -
      o "omp_main" for OpenMP version
      o "cuda_main" for CUDA version
      o "seq_main" for sequential version
