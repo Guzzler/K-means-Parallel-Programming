@@ -16,6 +16,10 @@ followings:
   * A parallel implementation using CUDA and C
   * A sequential version in C
 
+
+To clone:
+git clone git@github.com:Guzzler/K-means-Parallel-Programming.git
+
 To compile:
 You will need the NVIDIA CUDA toolkit, which contains nvcc, to build the CUDA
 version. It works fine in concert with gcc.
